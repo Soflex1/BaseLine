@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище linecoreBaseModelContainer" CdmEntityContainer="linecoreBaseEntities">
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="linecoreBaseModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GetTovara">
+      <EntityTypeMapping TypeName="linecoreBaseModel.GetTovara">
+        <MappingFragment StoreEntitySet="GetTovara">
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Sklad" ColumnName="Sklad" />
+          <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+          <ScalarProperty Name="NumberId" ColumnName="NumberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kontragent">
+      <EntityTypeMapping TypeName="linecoreBaseModel.Kontragent">
+        <MappingFragment StoreEntitySet="Kontragent">
+          <ScalarProperty Name="Kontragent1" ColumnName="Kontragent" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostTovara">
+      <EntityTypeMapping TypeName="linecoreBaseModel.PostTovara">
+        <MappingFragment StoreEntitySet="PostTovara">
+          <ScalarProperty Name="Kontragent" ColumnName="Kontragent" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Tovar" ColumnName="Tovar" />
+          <ScalarProperty Name="NumberId" ColumnName="NumberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="linecoreBaseModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sklad">
+      <EntityTypeMapping TypeName="linecoreBaseModel.Sklad">
+        <MappingFragment StoreEntitySet="Sklad">
+          <ScalarProperty Name="SkladName" ColumnName="SkladName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="linecoreBaseModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TovarColor">
+      <EntityTypeMapping TypeName="linecoreBaseModel.TovarColor">
+        <MappingFragment StoreEntitySet="TovarColor">
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tovares">
+      <EntityTypeMapping TypeName="linecoreBaseModel.Tovares">
+        <MappingFragment StoreEntitySet="Tovares">
+          <ScalarProperty Name="TovarCountry" ColumnName="TovarCountry" />
+          <ScalarProperty Name="TovarColor" ColumnName="TovarColor" />
+          <ScalarProperty Name="TovarArticle" ColumnName="TovarArticle" />
+          <ScalarProperty Name="TovarName" ColumnName="TovarName" />
+          <ScalarProperty Name="TovarId" ColumnName="TovarId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="linecoreBaseModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="linecoreBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="linecoreBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Country" EntityType="linecoreBaseModel.Country" />
+    <EntitySet Name="GetTovara" EntityType="linecoreBaseModel.GetTovara" />
+    <EntitySet Name="Kontragent" EntityType="linecoreBaseModel.Kontragent" />
+    <EntitySet Name="PostTovara" EntityType="linecoreBaseModel.PostTovara" />
+    <EntitySet Name="Role" EntityType="linecoreBaseModel.Role" />
+    <EntitySet Name="Sklad" EntityType="linecoreBaseModel.Sklad" />
+    <EntitySet Name="sysdiagrams" EntityType="linecoreBaseModel.sysdiagrams" />
+    <EntitySet Name="TovarColor" EntityType="linecoreBaseModel.TovarColor" />
+    <EntitySet Name="Tovares" EntityType="linecoreBaseModel.Tovares" />
+    <EntitySet Name="Users" EntityType="linecoreBaseModel.Users" />
+    <AssociationSet Name="FK_Tovares_Country" Association="linecoreBaseModel.FK_Tovares_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Tovares" EntitySet="Tovares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GetTovara_Role" Association="linecoreBaseModel.FK_GetTovara_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="GetTovara" EntitySet="GetTovara" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GetTovara_Sklad" Association="linecoreBaseModel.FK_GetTovara_Sklad">
+      <End Role="Sklad" EntitySet="Sklad" />
+      <End Role="GetTovara" EntitySet="GetTovara" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostTovara_Kontragent" Association="linecoreBaseModel.FK_PostTovara_Kontragent">
+      <End Role="Kontragent" EntitySet="Kontragent" />
+      <End Role="PostTovara" EntitySet="PostTovara" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Role" Association="linecoreBaseModel.FK_Users_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tovares_TovarColor" Association="linecoreBaseModel.FK_Tovares_TovarColor">
+      <End Role="TovarColor" EntitySet="TovarColor" />
+      <End Role="Tovares" EntitySet="Tovares" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="County" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tovares" Relationship="linecoreBaseModel.FK_Tovares_Country" FromRole="Country" ToRole="Tovares" />
+  </EntityType>
+  <EntityType Name="GetTovara">
+    <Key>
+      <PropertyRef Name="NumberId" />
+    </Key>
+    <Property Name="NumberId" Type="Int32" Nullable="false" />
+    <Property Name="Tovar" Type="Int32" Nullable="false" />
+    <Property Name="Sklad" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Manager" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="linecoreBaseModel.FK_GetTovara_Role" FromRole="GetTovara" ToRole="Role" />
+    <NavigationProperty Name="Sklad1" Relationship="linecoreBaseModel.FK_GetTovara_Sklad" FromRole="GetTovara" ToRole="Sklad" />
+  </EntityType>
+  <EntityType Name="Kontragent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Kontragent1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PostTovara" Relationship="linecoreBaseModel.FK_PostTovara_Kontragent" FromRole="Kontragent" ToRole="PostTovara" />
+  </EntityType>
+  <EntityType Name="PostTovara">
+    <Key>
+      <PropertyRef Name="NumberId" />
+    </Key>
+    <Property Name="NumberId" Type="Int32" Nullable="false" />
+    <Property Name="Tovar" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Kontragent" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kontragent1" Relationship="linecoreBaseModel.FK_PostTovara_Kontragent" FromRole="PostTovara" ToRole="Kontragent" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GetTovara" Relationship="linecoreBaseModel.FK_GetTovara_Role" FromRole="Role" ToRole="GetTovara" />
+    <NavigationProperty Name="Users" Relationship="linecoreBaseModel.FK_Users_Role" FromRole="Role" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Sklad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="SkladName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GetTovara" Relationship="linecoreBaseModel.FK_GetTovara_Sklad" FromRole="Sklad" ToRole="GetTovara" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TovarColor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tovares" Relationship="linecoreBaseModel.FK_Tovares_TovarColor" FromRole="TovarColor" ToRole="Tovares" />
+  </EntityType>
+  <EntityType Name="Tovares">
+    <Key>
+      <PropertyRef Name="TovarId" />
+    </Key>
+    <Property Name="TovarId" Type="Int32" Nullable="false" />
+    <Property Name="TovarName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TovarArticle" Type="Int32" Nullable="false" />
+    <Property Name="TovarColor" Type="Int32" Nullable="false" />
+    <Property Name="TovarCountry" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="linecoreBaseModel.FK_Tovares_Country" FromRole="Tovares" ToRole="Country" />
+    <NavigationProperty Name="TovarColor1" Relationship="linecoreBaseModel.FK_Tovares_TovarColor" FromRole="Tovares" ToRole="TovarColor" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="linecoreBaseModel.FK_Users_Role" FromRole="Users" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Tovares_Country">
+    <End Type="linecoreBaseModel.Country" Role="Country" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="linecoreBaseModel.Tovares" Role="Tovares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tovares">
+        <PropertyRef Name="TovarCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GetTovara_Role">
+    <End Type="linecoreBaseModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="linecoreBaseModel.GetTovara" Role="GetTovara" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="GetTovara">
+        <PropertyRef Name="Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GetTovara_Sklad">
+    <End Type="linecoreBaseModel.Sklad" Role="Sklad" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="linecoreBaseModel.GetTovara" Role="GetTovara" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sklad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GetTovara">
+        <PropertyRef Name="Sklad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostTovara_Kontragent">
+    <End Type="linecoreBaseModel.Kontragent" Role="Kontragent" Multiplicity="1" />
+    <End Type="linecoreBaseModel.PostTovara" Role="PostTovara" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kontragent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostTovara">
+        <PropertyRef Name="Kontragent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Role">
+    <End Type="linecoreBaseModel.Role" Role="Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="linecoreBaseModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tovares_TovarColor">
+    <End Type="linecoreBaseModel.TovarColor" Role="TovarColor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="linecoreBaseModel.Tovares" Role="Tovares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TovarColor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tovares">
+        <PropertyRef Name="TovarColor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
